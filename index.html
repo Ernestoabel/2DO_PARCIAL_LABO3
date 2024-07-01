@@ -1,0 +1,207 @@
+<!DOCTYPE html> 
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 2</title>
+    <link rel="icon" href="./Archivos/imagenes/svg/fi-brands-3m.svg" type="image/svg+xml">
+    <link rel="stylesheet" type="text/css" href="./Archivos/Estilo.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="./Archivos/EstiloFormulario.css" /> -->
+    <link rel="stylesheet" type="text/css" href="./Archivos/EstiloTabla.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="./Archivos/Logica.js" type="module" defer></script>
+</head>
+
+<body>
+
+    <div class="container-general">
+        <header class="flex">
+            <div class="barra flex">
+
+                <h2 class="titulo flex">
+                    <img src="./Archivos/imagenes/logo.svg" alt="Icono" class="iconoHead flex">
+                    Ernesto<strong>Fatala</strong>
+                </h2>
+
+                <nav>
+                    <ul class="flex">
+                        <li><a href="https://discord.com/" target="_blank"><img
+                                    src="./Archivos/imagenes/svg/fi-brands-discord.svg"></a></li>
+                        <li><a href="https://open.spotify.com/" target="_blank"><img
+                                    src="./Archivos/imagenes/svg/fi-brands-spotify.svg"></a></li>
+                        <li><a href="https://twitter.com/" target="_blank"><img
+                                    src="./Archivos/imagenes/svg/fi-brands-twitter.svg"></a></li>
+                        <li><a href="https://www.youtube.com/" target="_blank"><img
+                                    src="./Archivos/imagenes/svg/fi-brands-youtube.svg"></a></li>
+                    </ul>
+                </nav>
+                <h4 class="subtitulo flex">Administrador de<br>Planetas</h3>
+            </div>
+
+
+        </header>
+
+        <div id="miModal" class="modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title">Agregar Planeta</h5>
+                        <button type="button" class="btn-close cerrar" aria-label="Close" data-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post" id="form-planeta">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" required name="nombre" id="nombre"
+                                    placeholder="Ingrese nombre.." autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tamanio" class="form-label">Tamaño</label>
+                                <input type="text" class="form-control" required name="tamanio" id="tamanio"
+                                    placeholder="Ingrese tamaño.." autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="masa" class="form-label">Masa</label>
+                                <input type="text" class="form-control" required name="masa" id="masa"
+                                    placeholder="Ingrese masa.." autocomplete="off">
+                            </div>
+                            <div class="mb-3">
+                                <label for="distancia" class="form-label">Distancia</label>
+                                <input type="text" class="form-control" required name="distancia" id="distancia"
+                                    placeholder="Ingrese distancia.." autocomplete="off">
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-auto">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" name="vida"
+                                            id="vida" value="Tiene vida">
+                                        <label class="form-check-label" for="vida">Tiene Vida</label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" name="anillo" id="anillo"
+                                            value="Tiene anillo">
+                                        <label class="form-check-label" for="anillo">Tiene Anillo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipo" class="form-label">Tipo</label>
+                                <select class="form-select" name="tipo" id="tipo" aria-label="Default select example">
+                                    <option selected>Seleccione...</option>
+                                    <option value="Rocoso">Rocoso</option>
+                                    <option value="Gaseoso">Gaseoso</option>
+                                    <option value="Helado">Helado</option>
+                                    <option value="Enano">Enano</option>
+                                </select>
+                            </div>
+                            <!--
+                            <div class="form-group-observacion mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Composición Atmosférica</label>
+                                <textarea class="form-control" name="observacion" id="observacion" rows="3" required></textarea>
+                            </div>
+                            -->
+                            <h2 id="loading-textg" style="display: none;">Guardando...</h2>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Enviar!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="filtro-y-promedio" class="container mt-4 p-3 border border-secondary rounded">
+            <label for="filtro-tipo" class="form-label fw-bold">Filtrar por Tipo:</label>
+            <select class="form-select mb-3" id="filtro-tipo">
+                <option value="">Seleccione</option>
+                <option value="Rocoso">Rocoso</option>
+                <option value="Gaseoso">Gaseoso</option>
+                <option value="Helado">Helado</option>
+                <option value="Enano">Enano</option>
+            </select>
+            <span id="promedio-distancia" class="d-block bg-light p-2 rounded">Promedio de Distancia al Sol: N/A</span>
+        </div>
+        <div class="d-flex flex-column align-items-center my-5">
+            <div id="contenedor-checkboxes">
+                <input type="checkbox" id="chk-id" checked>
+                <label for="chk-id">ID</label>
+                <input type="checkbox" id="chk-nombre" checked>
+                <label for="chk-nombre">Nombre</label>
+                <input type="checkbox" id="chk-tamanio" checked>
+                <label for="chk-tamanio">Tamaño</label>
+                <input type="checkbox" id="chk-masa" checked>
+                <label for="chk-masa">Masa</label>
+                <input type="checkbox" id="chk-tipo" checked>
+                <label for="chk-tipo">Tipo</label>
+                <input type="checkbox" id="chk-distancia" checked>
+                <label for="chk-distancia">Distancia</label>
+                <input type="checkbox" id="chk-anillo" checked>
+                <label for="chk-anillo">Anillo</label>
+                <input type="checkbox" id="chk-vida" checked>
+                <label for="chk-vida">Vida</label>
+            </div>
+            <br>
+            <button id="aplicarFiltro"  class="btn btn-primary">Aplicar Filtro</button>
+        </div>
+        
+
+        <div class="container-tabla">
+            <button id="abrirModal">Abrir Formulario</button>
+            
+            <div id="texto-inicial" class="text-primary fw-bold mt-5 mb-3">PARA MODIFICAR UN PLANETA, HACER DOBLE CLIC EN LA CELDA</div>
+            <h2 id="loading-text" style="display: none;">Cargando...</h2>
+            <h2 id="loading-textm" style="display: none;">Modificando...</h2>
+            <h2 id="loading-textb" style="display: none;">Borrando...</h2>
+            <div class="container-table flex">
+                <table id="table-items" class="table-items table-stripped flex">
+                    <thead>
+                        <tr class="flex">
+                            <th>Selec</th>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Tamanio</th>
+                            <th>Masa</th>
+                            <th>Tipo</th>
+                            <th>Distancia</th>
+                            <th>Anillo</th>
+                            <th>Vida</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="tbodyx"></tbody>
+                </table>
+            </div>
+            <br>
+        </div>
+<!--
+        <button id="btnEliminarTodos" type="button" class="btn btn-danger btn-lg" onclick="eliminarTodosLosPlanetas()" disabled>
+            Eliminar Todos los Planetas del Servidor
+        </button>
+-->
+        <footer>
+
+            <nav class="redes-sociales">
+                <ul class="flex-fut">
+                    <li><a href="https://discord.com/" target="_blank"><img
+                                src="./Archivos/imagenes/svg/fi-brands-discord.svg" class="icono-foot"></a></li>
+                    <li><a href="https://open.spotify.com/" target="_blank"><img
+                                src="./Archivos/imagenes/svg/fi-brands-spotify.svg" class="icono-foot"></a></li>
+                    <li><a href="https://twitter.com/" target="_blank"><img
+                                src="./Archivos/imagenes/svg/fi-brands-twitter.svg" class="icono-foot"></a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank"><img
+                                src="./Archivos/imagenes/svg/fi-brands-youtube.svg" class="icono-foot"></a></li>
+                </ul>
+            </nav>
+            <div class="footer-content">
+                <p class="derechos">Todos los Derechos Reservados 2020@</p>
+            </div>
+
+        </footer>
+    </div>
+</body>

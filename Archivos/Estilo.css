@@ -1,0 +1,269 @@
+:root {
+    --primary-color: #d1b1c9;
+    --secondary-color: #4f046d;
+}
+
+/* Estilo del fondo de la pagina */
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('./imagenes/5153829.jpg');
+    background-size: cover; /* Hace que la imagen de fondo cubra todo el contenedor */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Estilo del conatainer general */
+.container-general {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 1rem;
+}
+
+/* Estilo del header */
+header {
+    padding: 20px 20px;
+    background-color: grey;
+    background-image: url(./imagenes/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 20vh;
+
+    font-family: poppins, sans-serif;
+
+    position: relative;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra img {
+    width: 100px;
+    height: auto;
+}
+
+.titulo {
+    font-size: 36px;
+    color: #fffefe;
+    font-weight: normal;
+    margin-right: 20px;
+}
+
+.titulo strong {
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #082e80;
+}
+
+.iconoHead {
+    margin-left: 10px; /* Espacio entre el icono y el texto */
+    width: 20px;       /* Ancho del icono */
+    height: auto;      /* Mantener la proporción */
+}
+
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.barra ul li a img {
+    width: 40px;
+    height: auto;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.barra ul li a img:hover {
+    transform: scale(1.2);
+}
+
+.subtitulo {
+    position: absolute; /* Posicionamiento absoluto dentro del header */
+    bottom: 10px;       /* Espaciado desde el fondo del header */
+    left: 20px;         /* Espaciado desde el lado izquierdo */
+    font-size: 18px;    /* Tamaño de la fuente del subtítulo */
+    color: #ffffff;     /* Color del texto del subtítulo */
+}
+
+/* Estilos para dispositivos con una anchura máxima de 768px (tablets y dispositivos móviles) */
+@media only screen and (max-width: 768px) {
+    .container-general {
+        margin-left: 5%;
+        /* Reducir el margen izquierdo */
+        margin-right: 5%;
+        /* Reducir el margen derecho */
+    }
+
+    header {
+        padding: 10px;
+        /* Reducir el relleno del encabezado */
+        height: 15vh;
+        /* Reducir la altura del encabezado */
+    }
+
+    .barra img {
+        width: 60px;
+        /* Reducir el tamaño del logo */
+    }
+
+    .titulo {
+        font-size: 24px;
+        /* Reducir el tamaño del título */
+    }
+
+    nav ul li {
+        margin-right: 10px;
+        /* Reducir el margen entre elementos del menú */
+    }
+
+    .barra ul li a img {
+        width: 30px;
+        /* Reducir el tamaño de los íconos del menú */
+    }
+}
+
+/* Estilos para dispositivos con una anchura máxima de 480px (dispositivos móviles) */
+@media only screen and (max-width: 480px) {
+    .container-general {
+        margin-left: 3%;
+        /* Reducir aún más el margen izquierdo */
+        margin-right: 3%;
+        /* Reducir aún más el margen derecho */
+    }
+
+    header {
+        padding: 5px;
+        /* Reducir aún más el relleno del encabezado */
+        height: 10vh;
+        /* Reducir aún más la altura del encabezado */
+    }
+
+    .barra img {
+        width: 50px;
+        /* Reducir aún más el tamaño del logo */
+    }
+
+    .titulo {
+        font-size: 20px;
+        /* Reducir aún más el tamaño del título */
+    }
+
+    nav ul li {
+        margin-right: 5px;
+        /* Reducir aún más el margen entre elementos del menú */
+    }
+
+    .barra ul li a img {
+        width: 25px;
+        /* Reducir aún más el tamaño de los íconos del menú */
+    }
+}
+
+/*Estilo spinner*/
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    background: #7a73738f;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.spinner-img {
+    width: 200px;
+    height: 200px;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*Estilo de footer*/
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #444;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.redes-sociales ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.redes-sociales li {
+    display: inline;
+}
+
+.redes-sociales a {
+    text-decoration: none;
+}
+
+.icono-foot {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.icono-foot:hover {
+    transform: scale(1.2);
+}
+
+
+
+.derechos {
+    margin-top: 10px;
+    font-size: 14px;
+    margin-right: 40px;
+}
+
+.eliminar-todo-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
